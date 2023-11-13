@@ -1,0 +1,19 @@
+iwr "https://www.huerm.gv.at/system/web/getImage.ashx?fileid=2129492&mode=T&width=650&height=759&cts=1654782843" -O $env:TMP\i.png
+
+Add-Type -TypeDefinition @" 
+using System; 
+using System.Runtime.InteropServices;
+  
+public class Params
+{ 
+    [DllImport("User32.dll",CharSet=CharSet.Unicode)] 
+    public static extern int SystemParametersInfo (Int32 uAction, 
+                                                   Int32 uParam, 
+                                                   String lpvParam, 
+                                                   Int32 fuWinIni);
+}
+"@ 
+
+[Params]::SystemParametersInfo(0x0014, 0, "$env:TMP\i.png", 0x01 -bor 0x02)
+
+rm $env:TEMP\i.png -r -Force -ErrorAction SilentlyContinue
