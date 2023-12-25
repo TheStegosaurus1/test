@@ -34,4 +34,4 @@ $mediaPlayer.Play()
 Start-Sleep $duration
 $mediaPlayer.Close()
 
-rm $env:TMP\i.m4a -r -Force -ErrorAction SilentlyContinue
+rm $env:TMP\i.mp3 -r -Force -ErrorAction SilentlyContinue
