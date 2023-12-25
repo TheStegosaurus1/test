@@ -22,4 +22,6 @@ rm $env:TEMP\i.png -r -Force -ErrorAction SilentlyContinue
 Add-Type -AssemblyName presentationCore
 $mediaPlayer = New-Object system.windows.media.mediaplayer
 $mediaPlayer.open("$env:TMP\i.m4a")
+$duration = $mediaPlayer.NaturalDuration.TimeSpan.Seconds
 $mediaPlayer.Play()
+Start-Sleep $duration
