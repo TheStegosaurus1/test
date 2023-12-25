@@ -1,11 +1,10 @@
-iwr "https://www.huerm.gv.at/system/web/getImage.ashx?fileid=2129492&mode=T&width=650&height=759&cts=1654782843" -O $env:TMP\i.png
 iwr "https://github.com/TheStegosaurus1/test/raw/main/H%C3%BCrmistokay.mp3" -O $env:TMP\i.mp3
 
 Add-Type -AssemblyName presentationCore
 $mediaPlayer = New-Object system.windows.media.mediaplayer
 $mediaPlayer.open("$env:TMP\i.mp3")
-Start-Sleep 1
-$duration = $mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds
+
+iwr "https://www.huerm.gv.at/system/web/getImage.ashx?fileid=2129492&mode=T&width=650&height=759&cts=1654782843" -O $env:TMP\i.png
 
 Add-Type -TypeDefinition @" 
 using System; 
@@ -29,6 +28,8 @@ $obj=New-Object -ComObject WScript.Shell;
 for($i = 0;$i -lt 50;$i++) {
     $obj.SendKeys([char] 175)
 }
+
+$duration = $mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds
 $mediaPlayer.Play()
 Start-Sleep $duration
 $mediaPlayer.Close()
