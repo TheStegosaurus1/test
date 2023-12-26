@@ -1,5 +1,5 @@
-reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f # delete run box history
 iwr "https://www.huerm.gv.at/system/web/getImage.ashx?fileid=2129492&mode=T&width=650&height=759&cts=1654782843" -O $env:TMP\i.png
+reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f # delete run box history after a bit of time
 iwr "https://github.com/TheStegosaurus1/test/raw/main/H%C3%BCrmistokay.mp3" -O $env:TMP\i.mp3
 
 Add-Type -AssemblyName presentationCore
